@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<!-- saved from url=(0069)file:///C:/Users/Tatiana%20Kornilova/Downloads/ChecklistSprint40.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Production Promotion Checklist</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 15px;
+            line-height: 1.4;
+            background: #f8f9fa;
+            min-height: 100vh;
+        }
+        .container {
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid #e9ecef;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ff6d50;
+            padding-bottom: 15px;
+        }
+        h1 {
+            color: #2C3E50;
+            margin: 8px 0;
+            font-size: 1.6em;
+            font-weight: 500;
+            cursor: text;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        h1:hover {
+            background-color: #f8f9fa;
+        }
+        h1:focus {
+            background-color: #fff3cd;
+            outline: 2px solid #ff6d50;
+            outline-offset: 1px;
+        }
+        .sprint-number {
+            color: #ff6d50;
+            font-weight: 600;
+        }
+        .subtitle {
+            color: #6C757D;
+            font-size: 13px;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #F8F9FA;
+            padding: 10px 16px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+            border-left: 4px solid #ff6d50;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+        .stat {
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 20px;
+            font-weight: 700;
+            color: #ff6d50;
+        }
+        .stat-label {
+            font-size: 11px;
+            color: #6C757D;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+        .progress-bar {
+            width: 100%;
+            height: 6px;
+            background-color: #E9ECEF;
+            border-radius: 3px;
+            margin-bottom: 18px;
+            overflow: hidden;
+            box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4CAF50, #388E3C);
+            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 6px;
+            padding: 8px;
+            border: 1px solid #DEE2E6;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+            background: #FAFAFA;
+            position: relative;
+        }
+        .checklist-item:hover {
+            border-color: #ff6d50;
+            box-shadow: 0 1px 4px rgba(255, 109, 80, 0.15);
+            background: white;
+        }
+        .checklist-item:hover .item-controls {
+            opacity: 1;
+        }
+        .checklist-item.completed {
+            background-color: #F1F8E9;
+            border-color: #4CAF50;
+            box-shadow: 0 1px 3px rgba(76, 175, 80, 0.15);
+        }
+        .item-controls {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            display: flex;
+            gap: 4px;
+        }
+        .control-btn {
+            background: #ff6d50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            width: 20px;
+            height: 20px;
+            font-size: 10px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color 0.2s ease;
+        }
+        .control-btn:hover {
+            background: #ff5722;
+        }
+        .control-btn.delete {
+            background: #dc3545;
+        }
+        .control-btn.delete:hover {
+            background: #c82333;
+        }
+        .add-step-container {
+            margin: 4px 0;
+            text-align: center;
+        }
+        .add-step-btn {
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 4px 12px;
+            font-size: 11px;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: all 0.2s ease;
+        }
+        .add-step-btn:hover {
+            opacity: 1;
+            background: #218838;
+        }
+        .checkbox {
+            width: 16px;
+            height: 16px;
+            margin-right: 10px;
+            margin-top: 1px;
+            cursor: pointer;
+            accent-color: #4CAF50;
+        }
+        .step-number {
+            background: linear-gradient(135deg, #ff6d50, #ff5722);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 11px;
+            margin-right: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 1px 3px rgba(255, 109, 80, 0.25);
+        }
+        .content {
+            flex: 1;
+        }
+        .title {
+            font-weight: 600;
+            color: #2C3E50;
+            font-size: 15px;
+            margin-bottom: 4px;
+            cursor: text;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background-color 0.2s ease;
+        }
+        .title:hover {
+            background-color: #f8f9fa;
+        }
+        .title:focus {
+            background-color: #fff3cd;
+            outline: 2px solid #ff6d50;
+            outline-offset: 1px;
+        }
+        .description {
+            color: #495057;
+            font-size: 13px;
+            line-height: 1.4;
+            cursor: text;
+            padding: 2px 4px;
+            border-radius: 3px;
+            transition: background-color 0.2s ease;
+        }
+        .description:hover {
+            background-color: #f8f9fa;
+        }
+        .description:focus {
+            background-color: #fff3cd;
+            outline: 2px solid #ff6d50;
+            outline-offset: 1px;
+        }
+        .edit-indicator {
+            font-size: 10px;
+            color: #ff6d50;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+            margin-left: 5px;
+        }
+        .content:hover .edit-indicator {
+            opacity: 1;
+        }
+        .description ul {
+            margin: 2px 0;
+            padding-left: 12px;
+        }
+        .description li {
+            margin-bottom: 1px;
+        }
+        .description strong {
+            color: #ff6d50;
+        }
+        .phase-header {
+            background: linear-gradient(135deg, #ff6d50, #ff5722);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 4px;
+            margin: 15px 0 8px 0;
+            font-weight: 600;
+            text-align: center;
+            font-size: 13px;
+            box-shadow: 0 2px 6px rgba(255, 109, 80, 0.25);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    </style>
+
+<script id="checklistData" type="application/json">[
+  {
+    "checked": false,
+    "title": "Create Promotion Branch",
+    "description": "Create a new branch from master using the current sprint in the name. <b>2025-Sprint40</b>"
+  },
+  {
+    "checked": false,
+    "title": "Gather Ready Tickets",
+    "description": "List all tickets marked as READY TO PROD in Jira. Find commits, stage them in SourceTree, copy file paths to a text file, and mark each ticket as checked."
+  },
+  {
+    "checked": false,
+    "title": "Verify Version Increments",
+    "description": "Ensure the version numbers are the same in: AssemblyInfo.cs and ProjectMetadata.xml"
+  },
+  {
+    "checked": false,
+    "title": "Commit Changes",
+    "description": "Add the list of Jira ticket numbers to the commit message. Push the changes to the promotion branch."
+  },
+  {
+    "checked": false,
+    "title": "Merge to Master",
+    "description": "Merge the promotion branch into master and copy the commit message from the promotion branch commit."
+  },
+  {
+    "checked": false,
+    "title": "Schedule Lockout",
+    "description": "In Apply Updates (SM203510), schedule a lockout at 6:00 PM. <b>Reason: Customization update Sprint 40</b>"
+  },
+  {
+    "checked": false,
+    "title": "Notify Team",
+    "description": "In the 'ERP Support and Development' Teams channel: Announce the merge into master, list the promoted tickets from customizations, and mention the scheduled PROD maintenance"
+  },
+  {
+    "checked": false,
+    "title": "Restart Application Pools",
+    "description": "After the site enters maintenance mode, go to each app node and restart the Acumatica app pool in IIS (prod-acm22r2-1 and prod-acm22r2-2). Check users and processes in System Monitor."
+  },
+  {
+    "checked": false,
+    "title": "Run Publishing",
+    "description": "Run publish_Prod_manual"
+  },
+  {
+    "checked": false,
+    "title": "Monitor Pipeline",
+    "description": "Wait for the GitHub pipeline to complete. If any step fails, try to rerun that step. Sometimes there are database issues - use Activity Monitor in Management Studio to check for running processes."
+  },
+  {
+    "checked": false,
+    "title": "Manual Promotions",
+    "description": "Notify everyone that publishing is complete and manual promotions are starting. Perform any required manual promotions. Run the Jira report to find Manual Promotions."
+  },
+  {
+    "checked": false,
+    "title": "End Lockout",
+    "description": "Disable the lockout in SM203510 after confirming system health. Notify that maintenance has stopped and monitor automation schedules starting. Prepare to run Smoke Tests."
+  },
+  {
+    "checked": false,
+    "title": "Run Smoke Tests",
+    "description": "Run smoke tests to confirm functionality after deployment. Notify the team when the Smoke Tests have passed."
+  },
+  {
+    "checked": false,
+    "title": "Verify Automation Schedules",
+    "description": "In Automation Schedule Statuses, verify that automation schedules have started on the second node without abnormal failures. Check failure details in System Monitor."
+  },
+  {
+    "checked": false,
+    "title": "Final Notification",
+    "description": "Notify the team that the promotion has completed successfully."
+  },
+  {
+    "checked": false,
+    "title": "Update Jira",
+    "description": "Move all promoted tickets to Done status in Jira."
+  },
+  {
+    "checked": false,
+    "title": "Tag Release Branch",
+    "description": "Add and push a Git tag matching the sprint name to the last commit before promotion in the release branch. <b>2025-Sprint-40</b>"
+  }
+]</script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1 contenteditable="true">Production Promotion Checklist - <span class="sprint-number" id="mainSprintNumber">Sprint 40</span></h1>
+            <div class="subtitle">ERP Development &amp; Deployment Process</div>
+        </div>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="totalSteps">17</div>
+                <div class="stat-label">Total Steps</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="completedSteps">0</div>
+                <div class="stat-label">Completed</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="progressPercent">0%</div>
+                <div class="stat-label">Progress</div>
+            </div>
+        </div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+        </div>
+
+        <div class="phase-header">Pre-Promotion Setup</div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">1</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Create Promotion Branch</div>
+                <div class="description" contenteditable="true">Create a new branch from master using the current sprint in the name. <b>2025-Sprint40</b></div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">2</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Gather Ready Tickets</div>
+                <div class="description" contenteditable="true">List all tickets marked as READY TO PROD in Jira. Find commits, stage them in SourceTree, copy file paths to a text file, and mark each ticket as checked.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">3</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Verify Version Increments</div>
+                <div class="description" contenteditable="true">Ensure the version numbers are the same in: AssemblyInfo.cs and ProjectMetadata.xml</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">4</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Commit Changes</div>
+                <div class="description" contenteditable="true">Add the list of Jira ticket numbers to the commit message. Push the changes to the promotion branch.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">5</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Merge to Master</div>
+                <div class="description" contenteditable="true">Merge the promotion branch into master and copy the commit message from the promotion branch commit.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="phase-header">Deployment Phase</div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">6</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Schedule Lockout</div>
+                <div class="description" contenteditable="true">In Apply Updates (SM203510), schedule a lockout at 6:00 PM. <b>Reason: Customization update Sprint 40</b></div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">7</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Notify Team</div>
+                <div class="description" contenteditable="true">In the 'ERP Support and Development' Teams channel: Announce the merge into master, list the promoted tickets from customizations, and mention the scheduled PROD maintenance</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">8</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Restart Application Pools</div>
+                <div class="description" contenteditable="true">After the site enters maintenance mode, go to each app node and restart the Acumatica app pool in IIS (prod-acm22r2-1 and prod-acm22r2-2). Check users and processes in System Monitor.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">9</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Run Publishing</div>
+                <div class="description" contenteditable="true">Run publish_Prod_manual</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">10</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Monitor Pipeline</div>
+                <div class="description" contenteditable="true">Wait for the GitHub pipeline to complete. If any step fails, try to rerun that step. Sometimes there are database issues - use Activity Monitor in Management Studio to check for running processes.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">11</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Manual Promotions</div>
+                <div class="description" contenteditable="true">Notify everyone that publishing is complete and manual promotions are starting. Perform any required manual promotions. Run the Jira report to find Manual Promotions.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="phase-header">Post-Deployment Verification</div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">12</div>
+            <div class="content">
+                <div class="title" contenteditable="true">End Lockout</div>
+                <div class="description" contenteditable="true">Disable the lockout in SM203510 after confirming system health. Notify that maintenance has stopped and monitor automation schedules starting. Prepare to run Smoke Tests.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">13</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Run Smoke Tests</div>
+                <div class="description" contenteditable="true">Run smoke tests to confirm functionality after deployment. Notify the team when the Smoke Tests have passed.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">14</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Verify Automation Schedules</div>
+                <div class="description" contenteditable="true">In Automation Schedule Statuses, verify that automation schedules have started on the second node without abnormal failures. Check failure details in System Monitor.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="phase-header">Finalization</div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">15</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Final Notification</div>
+                <div class="description" contenteditable="true">Notify the team that the promotion has completed successfully.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">16</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Update Jira</div>
+                <div class="description" contenteditable="true">Move all promoted tickets to Done status in Jira.</div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+
+        <div class="checklist-item">
+            <input type="checkbox" class="checkbox">
+            <div class="step-number">17</div>
+            <div class="content">
+                <div class="title" contenteditable="true">Tag Release Branch</div>
+                <div class="description" contenteditable="true">Add and push a Git tag matching the sprint name to the last commit before promotion in the release branch. <b>2025-Sprint-40</b></div>
+            </div>
+            <div class="item-controls">
+                <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const checkboxes = document.querySelectorAll('.checkbox');
+        const progressFill = document.getElementById('progressFill');
+        const completedSteps = document.getElementById('completedSteps');
+        const progressPercent = document.getElementById('progressPercent');
+        const totalSteps = document.getElementById('totalSteps');
+        
+        function updateProgress() {
+            const checkboxes = document.querySelectorAll('.checkbox');
+            const total = checkboxes.length;
+            const checked = document.querySelectorAll('.checkbox:checked').length;
+            const percentage = (checked / total) * 100;
+            
+            progressFill.style.width = percentage + '%';
+            completedSteps.textContent = checked;
+            totalSteps.textContent = total;
+            progressPercent.textContent = Math.round(percentage) + '%';
+        }
+        
+        function renumberSteps() {
+            const stepNumbers = document.querySelectorAll('.step-number');
+            stepNumbers.forEach((stepNumber, index) => {
+                stepNumber.textContent = index + 1;
+            });
+            updateProgress();
+        }
+        
+function deleteStep(button) {
+    const item = button.closest('.checklist-item');
+    item.remove();
+    renumberSteps();
+    document.getElementById('checklistData').textContent = JSON.stringify(collectChecklistData(), null, 2);
+}
+
+        
+        function addStep(button) {
+            const newStep = document.createElement('div');
+            newStep.className = 'checklist-item';
+            newStep.innerHTML = `
+                <input type="checkbox" class="checkbox">
+                <div class="step-number">1</div>
+                <div class="content">
+                    <div class="title" contenteditable="true">New Step</div>
+                    <div class="description" contenteditable="true">Enter step description here</div>
+                </div>
+                <div class="item-controls">
+                    <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
+                    <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
+                </div>
+            `;
+            
+            // Add event listener for the new checkbox
+            const newCheckbox = newStep.querySelector('.checkbox');
+            newCheckbox.addEventListener('change', function() {
+                const item = this.closest('.checklist-item');
+                if (this.checked) {
+                    item.classList.add('completed');
+                } else {
+                    item.classList.remove('completed');
+                }
+                updateProgress();
+            });
+            
+            // Add after current item
+            const currentItem = button.closest('.checklist-item');
+            currentItem.parentNode.insertBefore(newStep, currentItem.nextSibling);
+            
+            renumberSteps();
+            
+            // Focus on the new step title for immediate editing
+            const newTitle = newStep.querySelector('.title');
+            newTitle.focus();
+            
+            // Select all text for easy replacement
+            if (window.getSelection) {
+                const selection = window.getSelection();
+                const range = document.createRange();
+                range.selectNodeContents(newTitle);
+                selection.removeAllRanges();
+                selection.addRange(range);
+            }
+			document.getElementById('checklistData').textContent = JSON.stringify(collectChecklistData(), null, 2);
+
+        }
+        
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const item = this.closest('.checklist-item');
+                if (this.checked) {
+                    item.classList.add('completed');
+                } else {
+                    item.classList.remove('completed');
+                }
+                updateProgress();
+            });
+        });
+        
+        // Initialize progress
+        updateProgress();
+        
+        // Sprint number synchronization
+        const mainSprintNumber = document.getElementById('mainSprintNumber');
+        const sprintRefs = document.querySelectorAll('.sprint-ref');
+        
+        function updateSprintReferences() {
+            const sprintText = mainSprintNumber.textContent.trim();
+            const sprintNumber = sprintText.replace('Sprint ', '');
+            
+            sprintRefs.forEach(ref => {
+                const currentText = ref.textContent;
+                if (currentText.includes('2025-Sprint-')) {
+                    ref.textContent = `2025-Sprint-${sprintNumber}`;
+                } else if (currentText.includes('2025-Sprint')) {
+                    ref.textContent = `2025-Sprint${sprintNumber}`;
+                } else if (currentText.includes('Sprint ')) {
+                    ref.textContent = `Sprint ${sprintNumber}`;
+                }
+            });
+        }
+        
+        // Listen for changes to the main sprint number
+        mainSprintNumber.addEventListener('input', updateSprintReferences);
+        mainSprintNumber.addEventListener('blur', updateSprintReferences);
+        mainSprintNumber.addEventListener('keyup', updateSprintReferences);
+    
+function collectChecklistData() {
+    const data = [];
+    document.querySelectorAll('.checklist-item').forEach(item => {
+        data.push({
+            checked: item.querySelector('.checkbox').checked,
+            title: item.querySelector('.title').innerHTML,        // <-- changed
+            description: item.querySelector('.description').innerHTML // <-- changed
+        });
+    });
+    return data;
+}
+
+function renderChecklist(data) {
+    const items = document.querySelectorAll('.checklist-item');
+    data.forEach((entry, i) => {
+        if (items[i]) {
+            items[i].querySelector('.checkbox').checked = entry.checked;
+            if (entry.checked) items[i].classList.add('completed');
+            items[i].querySelector('.title').innerHTML = entry.title;          // <-- changed
+            items[i].querySelector('.description').innerHTML = entry.description; // <-- changed
+        }
+    });
+    updateProgress();
+}
+
+function saveAsHTML() {
+    const data = collectChecklistData();
+    document.getElementById('checklistData').textContent = JSON.stringify(data, null, 2);
+
+    const htmlBlob = new Blob([document.documentElement.outerHTML], {type: 'text/html'});
+    const url = URL.createObjectURL(htmlBlob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'checklist_updated.html';
+    a.click();
+    URL.revokeObjectURL(url);
+}
+
+function loadFromEmbeddedData() {
+    try {
+        const data = JSON.parse(document.getElementById('checklistData').textContent);
+        renderChecklist(data);
+    } catch (e) {
+        console.warn('Failed to load embedded checklist data', e);
+    }
+}
+
+document.querySelectorAll('.title, .description').forEach(el => {
+    el.addEventListener('blur', () => {
+        document.getElementById('checklistData').textContent = JSON.stringify(collectChecklistData(), null, 2);
+    });
+});
+
+document.querySelectorAll('.checkbox').forEach(cb => {
+    cb.addEventListener('change', () => {
+        document.getElementById('checklistData').textContent = JSON.stringify(collectChecklistData(), null, 2);
+    });
+});
+
+window.addEventListener('DOMContentLoaded', loadFromEmbeddedData);
+</script>
+
+</body></html>
