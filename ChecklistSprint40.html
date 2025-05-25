@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- saved from url=(0072)https://kornilova8.github.io/production-checklist/ChecklistSprint40.html -->
+<!-- saved from url=(0069)file:///C:/Users/Tatiana%20Kornilova/Downloads/ChecklistSprint40.html -->
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -267,12 +267,12 @@
 
 <script id="checklistData" type="application/json">[
   {
-    "checked": true,
+    "checked": false,
     "title": "Create Promotion Branch",
     "description": "Create a new branch from master using the current sprint in the name. <b>2025-Sprint40</b>"
   },
   {
-    "checked": true,
+    "checked": false,
     "title": "Gather Ready Tickets",
     "description": "List all tickets marked as READY TO PROD in Jira. Find commits, stage them in SourceTree, copy file paths to a text file, and mark each ticket as checked."
   },
@@ -280,11 +280,6 @@
     "checked": false,
     "title": "Verify Version Increments",
     "description": "Ensure the version numbers are the same in: AssemblyInfo.cs and ProjectMetadata.xml"
-  },
-  {
-    "checked": false,
-    "title": "New Step",
-    "description": "Enter step description here"
   },
   {
     "checked": false,
@@ -367,26 +362,26 @@
         
         <div class="stats">
             <div class="stat">
-                <div class="stat-number" id="totalSteps">18</div>
+                <div class="stat-number" id="totalSteps">17</div>
                 <div class="stat-label">Total Steps</div>
             </div>
             <div class="stat">
-                <div class="stat-number" id="completedSteps">2</div>
+                <div class="stat-number" id="completedSteps">0</div>
                 <div class="stat-label">Completed</div>
             </div>
             <div class="stat">
-                <div class="stat-number" id="progressPercent">11%</div>
+                <div class="stat-number" id="progressPercent">0%</div>
                 <div class="stat-label">Progress</div>
             </div>
         </div>
         
         <div class="progress-bar">
-            <div class="progress-fill" id="progressFill" style="width: 11.1111%;"></div>
+            <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
         </div>
 
         <div class="phase-header">Pre-Promotion Setup</div>
 
-        <div class="checklist-item completed">
+        <div class="checklist-item">
             <input type="checkbox" class="checkbox">
             <div class="step-number">1</div>
             <div class="content">
@@ -399,7 +394,7 @@
             </div>
         </div>
 
-        <div class="checklist-item completed">
+        <div class="checklist-item">
             <input type="checkbox" class="checkbox">
             <div class="step-number">2</div>
             <div class="content">
@@ -423,22 +418,11 @@
                 <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
                 <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
             </div>
-        </div><div class="checklist-item">
-                <input type="checkbox" class="checkbox">
-                <div class="step-number">4</div>
-                <div class="content">
-                    <div class="title" contenteditable="true">New Step</div>
-                    <div class="description" contenteditable="true">Enter step description here</div>
-                </div>
-                <div class="item-controls">
-                    <button class="control-btn" onclick="addStep(this)" title="Add step after">+</button>
-                    <button class="control-btn delete" onclick="deleteStep(this)" title="Delete step">×</button>
-                </div>
-            </div>
+        </div>
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">5</div>
+            <div class="step-number">4</div>
             <div class="content">
                 <div class="title" contenteditable="true">Commit Changes</div>
                 <div class="description" contenteditable="true">Add the list of Jira ticket numbers to the commit message. Push the changes to the promotion branch.</div>
@@ -451,7 +435,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">6</div>
+            <div class="step-number">5</div>
             <div class="content">
                 <div class="title" contenteditable="true">Merge to Master</div>
                 <div class="description" contenteditable="true">Merge the promotion branch into master and copy the commit message from the promotion branch commit.</div>
@@ -466,7 +450,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">7</div>
+            <div class="step-number">6</div>
             <div class="content">
                 <div class="title" contenteditable="true">Schedule Lockout</div>
                 <div class="description" contenteditable="true">In Apply Updates (SM203510), schedule a lockout at 6:00 PM. <b>Reason: Customization update Sprint 40</b></div>
@@ -479,7 +463,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">8</div>
+            <div class="step-number">7</div>
             <div class="content">
                 <div class="title" contenteditable="true">Notify Team</div>
                 <div class="description" contenteditable="true">In the 'ERP Support and Development' Teams channel: Announce the merge into master, list the promoted tickets from customizations, and mention the scheduled PROD maintenance</div>
@@ -492,7 +476,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">9</div>
+            <div class="step-number">8</div>
             <div class="content">
                 <div class="title" contenteditable="true">Restart Application Pools</div>
                 <div class="description" contenteditable="true">After the site enters maintenance mode, go to each app node and restart the Acumatica app pool in IIS (prod-acm22r2-1 and prod-acm22r2-2). Check users and processes in System Monitor.</div>
@@ -505,7 +489,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">10</div>
+            <div class="step-number">9</div>
             <div class="content">
                 <div class="title" contenteditable="true">Run Publishing</div>
                 <div class="description" contenteditable="true">Run publish_Prod_manual</div>
@@ -518,7 +502,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">11</div>
+            <div class="step-number">10</div>
             <div class="content">
                 <div class="title" contenteditable="true">Monitor Pipeline</div>
                 <div class="description" contenteditable="true">Wait for the GitHub pipeline to complete. If any step fails, try to rerun that step. Sometimes there are database issues - use Activity Monitor in Management Studio to check for running processes.</div>
@@ -531,7 +515,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">12</div>
+            <div class="step-number">11</div>
             <div class="content">
                 <div class="title" contenteditable="true">Manual Promotions</div>
                 <div class="description" contenteditable="true">Notify everyone that publishing is complete and manual promotions are starting. Perform any required manual promotions. Run the Jira report to find Manual Promotions.</div>
@@ -546,7 +530,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">13</div>
+            <div class="step-number">12</div>
             <div class="content">
                 <div class="title" contenteditable="true">End Lockout</div>
                 <div class="description" contenteditable="true">Disable the lockout in SM203510 after confirming system health. Notify that maintenance has stopped and monitor automation schedules starting. Prepare to run Smoke Tests.</div>
@@ -559,7 +543,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">14</div>
+            <div class="step-number">13</div>
             <div class="content">
                 <div class="title" contenteditable="true">Run Smoke Tests</div>
                 <div class="description" contenteditable="true">Run smoke tests to confirm functionality after deployment. Notify the team when the Smoke Tests have passed.</div>
@@ -572,7 +556,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">15</div>
+            <div class="step-number">14</div>
             <div class="content">
                 <div class="title" contenteditable="true">Verify Automation Schedules</div>
                 <div class="description" contenteditable="true">In Automation Schedule Statuses, verify that automation schedules have started on the second node without abnormal failures. Check failure details in System Monitor.</div>
@@ -587,7 +571,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">16</div>
+            <div class="step-number">15</div>
             <div class="content">
                 <div class="title" contenteditable="true">Final Notification</div>
                 <div class="description" contenteditable="true">Notify the team that the promotion has completed successfully.</div>
@@ -600,7 +584,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">17</div>
+            <div class="step-number">16</div>
             <div class="content">
                 <div class="title" contenteditable="true">Update Jira</div>
                 <div class="description" contenteditable="true">Move all promoted tickets to Done status in Jira.</div>
@@ -613,7 +597,7 @@
 
         <div class="checklist-item">
             <input type="checkbox" class="checkbox">
-            <div class="step-number">18</div>
+            <div class="step-number">17</div>
             <div class="content">
                 <div class="title" contenteditable="true">Tag Release Branch</div>
                 <div class="description" contenteditable="true">Add and push a Git tag matching the sprint name to the last commit before promotion in the release branch. <b>2025-Sprint-40</b></div>
